@@ -39,4 +39,23 @@ public class CustomerController {
         return ResponseEntity.ok(customerFacade.createCustomer(customerDTO));
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateCustomer(@PathVariable Long id, @RequestBody CustomerDTO customerDTO) {
+        try {
+            return ResponseEntity.ok(customerFacade.updateCustomer(id, customerDTO));
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteCustomer(@PathVariable Long id) {
+        try {
+            customerFacade.deleteCustomer(id);
+            return ResponseEntity.noContent().build();
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
 }
