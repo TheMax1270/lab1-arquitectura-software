@@ -3,8 +3,11 @@
 Aplicación bancaria desarrollada con Spring Boot y React. Permite consultar clientes, crear clientes, realizar transferencias y consultar el historial de transacciones por cuenta.
 
 Estudiante: Max Daniel Perez Quintero
+
 Curso: Arquitectura de Software
+
 Docente: Diego José Luis Botia Valderrama
+
 Universidad de Antioquia
 
 Ejecución del backend:
