@@ -47,3 +47,15 @@ jobs:
           name: lab12026p-jar
           path: target/*.jar
           if-no-files-found: error
+
+      - name: Log in to Docker Hub
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: printf '%s' "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
+
+      - name: Build Docker image
+        run: docker build --file Dockerfile --tag max127085/lab12026p:latest .
+
+      - name: Push Docker image
+        run: docker push max127085/lab12026p:latest
