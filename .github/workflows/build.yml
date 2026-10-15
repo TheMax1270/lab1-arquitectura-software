@@ -37,3 +37,13 @@ jobs:
           -Dsonar.organization=devconnect
           -Dsonar.projectKey=TheMax1270_lab1-arquitectura-software
           -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+
+      - name: Build JAR
+        run: ./mvnw package -DskipTests
+
+      - name: Upload JAR artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: lab12026p-jar
+          path: target/*.jar
+          if-no-files-found: error
